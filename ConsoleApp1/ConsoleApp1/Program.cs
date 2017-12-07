@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace CSHttpClientSample
 {
@@ -53,7 +54,7 @@ namespace CSHttpClientSample
             }
 
             // A peek at the raw JSON response.
-            Console.WriteLine(responseContent);
+            //Console.WriteLine(responseContent);
 
             // Processing the JSON into manageable objects.
             JToken rootToken = JArray.Parse(responseContent).First;
@@ -73,15 +74,28 @@ namespace CSHttpClientSample
 
             // Show all scores
             JEnumerable<JToken> scoreList = scoresToken.First.Children();
+            double highestScore = 0;
+
+            var output = "";
+
             foreach (var score in scoreList)
             {
-                Console.WriteLine(score);
+                string emotion = "";
+
+                //Console.WriteLine(output);
+                //Console.WriteLine(score);
+
                 double x = score.ToObject<double>();
-                if (x > .5)
+                
+                if (highestScore < x)
                 {
-                    //Console.WriteLine("You are HAPPY");
+                    highestScore = x;
+                    emotion = score.ToString();
+                    output = Regex.Replace(emotion, @"[^a-z]", string.Empty);
                 }
             }
+
+            Console.WriteLine("Your emotion is: " + output);
 
         }
     }
