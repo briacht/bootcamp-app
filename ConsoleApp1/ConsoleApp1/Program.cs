@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace CSHttpClientSample
 {
@@ -83,7 +84,7 @@ namespace CSHttpClientSample
                 string emotion = "";
 
                 //Console.WriteLine(output);
-                //Console.WriteLine(score);
+                Console.WriteLine(score);
 
                 double x = score.ToObject<double>();
                 
@@ -92,11 +93,67 @@ namespace CSHttpClientSample
                     highestScore = x;
                     emotion = score.ToString();
                     output = Regex.Replace(emotion, @"[^a-z]", string.Empty);
+
                 }
             }
 
-            Console.WriteLine("Your emotion is: " + output);
+            string song = "";
+            string url = "";
 
+            if (output == "anger")
+            {
+                url = "https://www.youtube.com/watch?v=j0lSpNtjPM8";
+                song = "Last Resort";
+            }
+
+            if (output == "happiness")
+            {
+                song = "Happy";
+                url = "https://www.youtube.com/watch?v=ZbZSe6N_BXs";
+            }
+
+            if (output == "sadness")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+            if (output == "contempt")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+            if (output == "disgust")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+            if (output == "fear")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+            if (output == "neutral")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+
+            if (output == "surprise")
+            {
+                song = "How To Save a Life";
+                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+            }
+
+            Console.WriteLine("Your emotion is: " + output + " You should listen to: " + song);
+
+            System.Threading.Thread.Sleep(3000);
+
+            Process.Start("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe", url);
         }
     }
 }
