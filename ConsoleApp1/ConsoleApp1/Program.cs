@@ -84,7 +84,7 @@ namespace CSHttpClientSample
                 string emotion = "";
 
                 //Console.WriteLine(output);
-                Console.WriteLine(score);
+                //Console.WriteLine(score);
 
                 double x = score.ToObject<double>();
                 
@@ -120,36 +120,38 @@ namespace CSHttpClientSample
 
             if (output == "contempt")
             {
-                song = "How To Save a Life";
-                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+                song = "Forget You";
+                url = "https://www.youtube.com/watch?v=bKxodgpyGec";
             }
 
             if (output == "disgust")
             {
-                song = "How To Save a Life";
-                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+                song = "Blurred Lines";
+                url = "https://www.youtube.com/watch?v=yyDUC1LUXSU&has_verified=1";
             }
 
             if (output == "fear")
             {
-                song = "How To Save a Life";
-                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+                song = "Monster Mash";
+                url = "https://www.youtube.com/watch?v=l2PoSljk8cE";
             }
 
             if (output == "neutral")
             {
-                song = "How To Save a Life";
-                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+                song = "Everlasting Light";
+                url = "https://www.youtube.com/watch?v=QruSZ7xO7z4";
             }
 
 
             if (output == "surprise")
             {
-                song = "How To Save a Life";
-                url = "https://www.youtube.com/watch?v=cjVQ36NhbMk";
+                song = "Dick in a Box";
+                url = "https://www.youtube.com/watch?v=VHQBgOZKk6k";
             }
 
-            Console.WriteLine("Your emotion is: " + output + " You should listen to: " + song);
+            Console.WriteLine("Your emotion is: " + output + ". You should listen to: " + song + ".");
+
+            Console.WriteLine("\nLoading song now...");
 
             System.Threading.Thread.Sleep(3000);
 
